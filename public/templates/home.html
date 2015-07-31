@@ -3,7 +3,7 @@
 	<div class="col-sm-1 gutter"></div>
 	<div class="col-sm-2 col-xs-6 movie" ng-repeat="movie in movies.results">
 	<p tooltips tooltip-title="{{movie.title}}" tooltip-size="small" tooltip-try="0">
-		<img src="http://image.tmdb.org/t/p/w342{{movie.poster_path}}" class="poster">
+		<img ng-src="{{posterLink(movie)}}" class="poster">
 	</p>
 	</div>
 </div>
