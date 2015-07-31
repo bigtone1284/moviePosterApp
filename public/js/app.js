@@ -1,1 +1,1 @@
-window.movieApp = angular.module("movieApp", ["ngRoute", "ngResource"]);
+window.movieApp = angular.module("movieApp", ["ngRoute", "ngResource", "720kb.tooltips"]);

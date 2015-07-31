@@ -1,0 +1,13 @@
+body {
+  padding-top: 70px;
+}
+
+p { 
+	display: inline-block;
+	text-align: center;
+}
+
+.container { 
+	width: auto; 
+	background: #F1F3F4;
+}
