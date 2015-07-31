@@ -2,20 +2,18 @@
 	height: 180px;
 	width: 120px;
 	border-radius: 10px;
-	-moz-box-shadow: 0 0 10px #BCBCAD;
-	-webkit-box-shadow: 0 0 10px #BCBCAD;
-	box-shadow: 0 0 10px #BCBCAD;
-}
-
-.movies-list {
-	min-width: 100%;
-	text-align: center;
-	overflow: auto;
+	-moz-box-shadow: 0 0 15px #BCBCAD;
+	-webkit-box-shadow: 0 0 15px #BCBCAD;
+	box-shadow: 0 0 15px #BCBCAD;
 }
 
 .movie {
-	padding-right: 1px;
-	padding-left: 1px;
+	text-align: center;
+	padding: 1px;
+}
+
+.gutter { 
+	min-height: 100%;
 }
 
 .movies-list h4 {

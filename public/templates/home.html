@@ -1,5 +1,6 @@
-<div class="row movies-list">
-	<h4 class=>Latest Releases</h2>
+<div class="movies-list row">
+	<h4>Latest Releases</h2>
+	<div class="col-sm-1 gutter"></div>
 	<div class="col-sm-2 col-xs-6 movie" ng-repeat="movie in movies.results">
 	<p tooltips tooltip-title="{{movie.title}}" tooltip-size="small" tooltip-try="0">
 		<img src="http://image.tmdb.org/t/p/w342{{movie.poster_path}}" class="poster">
