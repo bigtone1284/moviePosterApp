@@ -1,0 +1,14 @@
+<nav class="text-center">
+  <ul class="pagination custom">
+    <li><a class="first-last" href="#?page=1">First</a></li>
+    <li><a ng-show="previous()" ng-href="#?page={{previous()}}">Prev</a></li>
+    <li ng-show="ellipsesBefore()"><a class="page" >...</a></li>
+    <li><a class="page {{currentPage(0)}}" ng-href="#?page={{page(0)}}">{{page(0)}}</a></li>
+    <li><a class="page {{currentPage(1)}}" ng-href="#?page={{page(1)}}">{{page(1)}}</a></li>
+    <li><a class="page {{currentPage(2)}}" ng-href="#?page={{page(2)}}">{{page(2)}}</a></li>
+    <li ng-show="ellipsesAfter()"><a class="page" >...</a></li>
+    <li><a class="page-number current" >{{pageLabel()}}</a></li>
+    <li><a ng-show="next()" href="#?page={{next()}}">Next</a></li>
+    <li><a class="first-last" ng-href="#?page={{movies.total_pages}}">Last</a></li>
+  </ul>
+</nav>

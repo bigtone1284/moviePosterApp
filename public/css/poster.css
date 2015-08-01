@@ -21,3 +21,13 @@
 	padding-left: 10px;
 	color: #848DA3;
 }
+
+@media (min-width:0px) and (max-width:400px) {
+	.poster {
+	height: 160px;
+	width: 100px;
+	border-radius: 10px;
+	-moz-box-shadow: 0 0 15px #BCBCAD;
+	-webkit-box-shadow: 0 0 15px #BCBCAD;
+	box-shadow: 0 0 15px #BCBCAD;
+}

@@ -1,8 +1,8 @@
 movieApp.controller("homeController", function ($scope, movieFactory, $routeParams) {
   $scope.headerSrc = "templates/header.html";
-  $routeParams.page = $routeParams.page || 1;
+  $routeParams.page = parseInt($routeParams.page, 10) || 1;
   $scope.movies = movieFactory.get({page: $routeParams.page});
-  $scope.paginatorSrc = "templates/paginator.html";
+  $scope.paginationSrc = "templates/pagination.html";
 
   $scope.ellipsesBefore = function () {
 		return ($scope.movies.total_pages > 3 && $routeParams.page > 2);
@@ -10,6 +10,18 @@ movieApp.controller("homeController", function ($scope, movieFactory, $routePara
 
   $scope.ellipsesAfter = function () {
 		return ($scope.movies.total_pages > 3 && $scope.movies.total_pages > $routeParams.page + 2);
+  };
+
+  $scope.previous = function () {
+		if ($routeParams.page > 1) {
+			return $routeParams.page - 1;
+		}
+  };
+
+  $scope.next = function () {
+		if ($routeParams.page < $scope.movies.total_pages) {
+			return $routeParams.page + 1;
+		}
   };
 
   $scope.posterLink = function (movie) {
@@ -20,6 +32,27 @@ movieApp.controller("homeController", function ($scope, movieFactory, $routePara
 		} else {
 			return "http://cdn.shoptools.com/images/products/starrett/imagenotavailable.jpg";
 		}
+	};
+
+	$scope.page = function (pageNum) {
+		if ($routeParams.page + 2 > $scope.movies.total_pages) {
+			return $scope.movies.total_pages - 2 + pageNum;
+		}
+		return pageNum + $routeParams.page;
+	};
+
+	$scope.pageLabel = function () {
+		return $routeParams.page;
+	};
+
+	$scope.currentPage = function (pageNum) {
+		if ($routeParams.page === $scope.movies.total_pages) {
+			if (pageNum === 2) return "current";
+		}
+		if ($routeParams.page === $scope.movies.total_pages - 1) {
+			if (pageNum === 1) return "current";
+		}
+		if (pageNum === 0) return "current";
 	};
 
 });
