@@ -1,10 +1,14 @@
 movieApp.config(function ($routeProvider) {
   $routeProvider
     .when("/", {
-      templateUrl: "templates/home.html",
+      templateUrl: "template/home.html",
       controller: "homeController"
     })
+    .when("/movie/:id", {
+      templateUrl: "template/movie.html",
+      controller: "movieController"
+    })
     .otherwise({
-        redirectTo: "/"
+      redirectTo: "/"
     });
 });

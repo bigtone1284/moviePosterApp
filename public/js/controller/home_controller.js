@@ -1,8 +1,9 @@
 movieApp.controller("homeController", function ($scope, movieFactory, $routeParams) {
-  $scope.headerSrc = "templates/header.html";
+  $scope.headerSrc = "template/header.html";
   $routeParams.page = parseInt($routeParams.page, 10) || 1;
   $scope.movies = movieFactory.get({page: $routeParams.page});
-  $scope.paginationSrc = "templates/pagination.html";
+  $scope.paginationSrc = "template/pagination.html";
+  $scope.currMovie = null;
 
   $scope.ellipsesBefore = function () {
 		return ($scope.movies.total_pages > 3 && $routeParams.page > 2);
@@ -53,6 +54,17 @@ movieApp.controller("homeController", function ($scope, movieFactory, $routePara
 			if (pageNum === 1) return "current";
 		}
 		if (pageNum === 0) return "current";
+	};
+
+	$scope.getMovieById = function (movieId) {
+		debugger
+		if (!$scope.movies.$resolved || Math.floor(movieId % 20) + 1 !== $scope.movies.page) {
+			$scope.movies = movieFactory.get({page: Math.floor(movieId / 20) + 1}, function () {
+				$scope.currMovie = $scope.movies.results[movieId % 20 - 1];
+			});
+		} else {
+			$scope.currMovie = $scope.movies.results[movieId % 20 - 1];
+		}
 	};
 
 });
