@@ -57,7 +57,6 @@ movieApp.controller("homeController", function ($scope, movieFactory, $routePara
 	};
 
 	$scope.getMovieById = function (movieId) {
-		debugger
 		if (!$scope.movies.$resolved || Math.floor(movieId % 20) + 1 !== $scope.movies.page) {
 			$scope.movies = movieFactory.get({page: Math.floor(movieId / 20) + 1}, function () {
 				$scope.currMovie = $scope.movies.results[movieId % 20 - 1];
