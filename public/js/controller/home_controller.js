@@ -1,16 +1,16 @@
-movieApp.controller("homeController", function ($scope, movieFactory, $routeParams) {
+movieApp.controller("homeController", function ($scope, movieFactory, $routeParams, $rootScope) {
   $scope.headerSrc = "template/header.html";
   $routeParams.page = parseInt($routeParams.page, 10) || 1;
-  $scope.movies = movieFactory.get({page: $routeParams.page});
+  $rootScope.movies = movieFactory.get({page: $routeParams.page});
   $scope.paginationSrc = "template/pagination.html";
   $scope.currMovie = null;
 
   $scope.ellipsesBefore = function () {
-		return ($scope.movies.total_pages > 3 && $routeParams.page > 2);
+		return ($rootScope.movies.total_pages > 3 && $routeParams.page > 2);
   };
 
   $scope.ellipsesAfter = function () {
-		return ($scope.movies.total_pages > 3 && $scope.movies.total_pages > $routeParams.page + 2);
+		return ($rootScope.movies.total_pages > 3 && $rootScope.movies.total_pages > $routeParams.page + 2);
   };
 
   $scope.previous = function () {
@@ -20,7 +20,7 @@ movieApp.controller("homeController", function ($scope, movieFactory, $routePara
   };
 
   $scope.next = function () {
-		if ($routeParams.page < $scope.movies.total_pages) {
+		if ($routeParams.page < $rootScope.movies.total_pages) {
 			return $routeParams.page + 1;
 		}
   };
@@ -36,8 +36,8 @@ movieApp.controller("homeController", function ($scope, movieFactory, $routePara
 	};
 
 	$scope.page = function (pageNum) {
-		if ($routeParams.page + 2 > $scope.movies.total_pages) {
-			return $scope.movies.total_pages - 2 + pageNum;
+		if ($routeParams.page + 2 > $rootScope.movies.total_pages) {
+			return $rootScope.movies.total_pages - 2 + pageNum;
 		}
 		return pageNum + $routeParams.page;
 	};
@@ -47,22 +47,22 @@ movieApp.controller("homeController", function ($scope, movieFactory, $routePara
 	};
 
 	$scope.currentPage = function (pageNum) {
-		if ($routeParams.page === $scope.movies.total_pages) {
+		if ($routeParams.page === $rootScope.movies.total_pages) {
 			if (pageNum === 2) return "current";
 		}
-		if ($routeParams.page === $scope.movies.total_pages - 1) {
+		if ($routeParams.page === $rootScope.movies.total_pages - 1) {
 			if (pageNum === 1) return "current";
 		}
 		if (pageNum === 0) return "current";
 	};
 
 	$scope.getMovieById = function (movieId) {
-		if (!$scope.movies.$resolved || Math.floor(movieId % 20) + 1 !== $scope.movies.page) {
-			$scope.movies = movieFactory.get({page: Math.floor(movieId / 20) + 1}, function () {
-				$scope.currMovie = $scope.movies.results[movieId % 20 - 1];
+		if (!$rootScope.movies.$resolved || Math.floor(movieId % 20) + 1 !== $rootScope.movies.page) {
+			$rootScope.movies = movieFactory.get({page: Math.floor(movieId / 20) + 1}, function () {
+				$scope.currMovie = $rootScope.movies.results[movieId % 20 - 1];
 			});
 		} else {
-			$scope.currMovie = $scope.movies.results[movieId % 20 - 1];
+			$scope.currMovie = $rootScope.movies.results[movieId % 20 - 1];
 		}
 	};
 
