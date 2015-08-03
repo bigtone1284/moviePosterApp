@@ -57,12 +57,13 @@ movieApp.controller("homeController", function ($scope, movieFactory, $routePara
 	};
 
 	$scope.getMovieById = function (movieId) {
-		if (!$rootScope.movies.$resolved || Math.floor(movieId % 20) + 1 !== $rootScope.movies.page) {
-			$rootScope.movies = movieFactory.get({page: Math.floor(movieId / 20) + 1}, function () {
-				$scope.currMovie = $rootScope.movies.results[movieId % 20 - 1];
+		var modMovieId = movieId % 20 === 0 ? 20 : movieId % 20;
+		if (!$rootScope.movies.$resolved || Math.floor(modMovieId) + 1 !== $rootScope.movies.page) {
+			$rootScope.movies = movieFactory.get({page: Math.floor((movieId - 1) / 20) + 1}, function () {
+				$scope.currMovie = $rootScope.movies.results[modMovieId - 1];
 			});
 		} else {
-			$scope.currMovie = $rootScope.movies.results[movieId % 20 - 1];
+			$scope.currMovie = $rootScope.movies.results[modMovieId - 1];
 		}
 	};
 

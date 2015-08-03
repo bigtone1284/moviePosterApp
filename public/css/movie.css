@@ -1,5 +1,5 @@
 div.movie {
-	min-height: 110%;
+	min-height: 120%;
 	min-width: 110%;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -15,10 +15,10 @@ div.movie {
   -o-background-size: cover;
   background-size: cover;
 
-  margin-right: -70px;
-  margin-left: -70px;
-  margin-top: -30px;
-  margin-bottom: -30px;
+  margin-right: -25%;
+  margin-left: -25%;
+  margin-top: -10%;
+  margin-bottom: -10%;
 
  	z-index: -1;
 
@@ -29,4 +29,5 @@ div.movie {
 	position: absolute;
 	top: 10%;
 	z-index: 1;
+	padding: 0;
 }

@@ -1,6 +1,8 @@
 <div class="movie" style='background-image: {{background()}}'>
 </div>
-
-<div class="movie-details">
-	text
+<div class="container movie-details">
+	<ul class="nav nav-pills">
+	  <li role="presentation"><a href="#/?page={{pageNum}}">Back to List</a></li>
+	  <li role="presentation"><a href="#/movies/{{movieId + 1}}">Next Movie</a></li>
+	</ul>
 </div>
