@@ -2,7 +2,9 @@ movieApp.controller("movieController", function ($scope, $routeParams, $location
 	$rootScope.movies = movies;
 	$scope.getMovieById($routeParams.id);
 
-	$scope.background = function (movie) {
-		return "http://image.tmdb.org/t/p/w342" + movie.poster_path;
+	$scope.background = function () {
+		if ($scope.currMovie) {
+			return "url(http://image.tmdb.org/t/p/w342" + $scope.currMovie.poster_path + ");";
+		}
 	};
 });
