@@ -9,6 +9,7 @@ movieApp.config(function ($routeProvider) {
       controller: "movieController",
       resolve: {
 				movies: function ($routeParams, movieFactory) {
+					// before movies/:id is visited, resolve the movies collection.
 					var page = Math.floor($routeParams.id / 20) + 1;
 					return movieFactory.get({ page: page });
 				}

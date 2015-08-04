@@ -21,6 +21,7 @@ movieApp.controller("movieController", function ($scope, $routeParams, $location
 		return $scope.currMovie.title + " (" + $filter('date')(releaseDate, "yyyy") + ")";
 	};
 
+	// note: no rating (G, PG, R, etc.) was provided in the api call.  
 	$scope.details = function () {
 		var score = "Score: " + $scope.currMovie.vote_average;
 		var releaseDate = new Date($scope.currMovie.release_date);
@@ -28,6 +29,8 @@ movieApp.controller("movieController", function ($scope, $routeParams, $location
 		return [score, release].join(' | ');
 	};
 
+	// same details as above but different return formating for
+	// the template to use.  
 	$scope.vertDetails = function () {
 		var score = $scope.currMovie.vote_average;
 		var releaseDate = new Date($scope.currMovie.release_date);

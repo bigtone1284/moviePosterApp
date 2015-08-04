@@ -6,10 +6,11 @@ movieApp.controller("homeController", function ($scope, movieFactory, $routePara
   $scope.paginationSrc = "template/pagination.html";
   $scope.currMovie = null;
 
+  // if '...' before tab is needed in pagination  
   $scope.ellipsesBefore = function () {
 		return ($rootScope.movies.total_pages > 3 && $routeParams.page > 2);
   };
-
+  // if '...' after tab is needed in pagination
   $scope.ellipsesAfter = function () {
 		return ($rootScope.movies.total_pages > 3 && $rootScope.movies.total_pages > $routeParams.page + 2);
   };
@@ -26,6 +27,9 @@ movieApp.controller("homeController", function ($scope, movieFactory, $routePara
 		}
   };
 
+  // note: some movies do not have a poster_path.
+  // so I used its backdrop_path instead.  
+  // if neither exist, I sent a 'no image available' image
   $scope.posterLink = function (movie) {
 		if (movie.poster_path) {
 			return "http://image.tmdb.org/t/p/w342" + movie.poster_path;
@@ -47,6 +51,8 @@ movieApp.controller("homeController", function ($scope, movieFactory, $routePara
 		return $routeParams.page;
 	};
 
+	// used to determine which page is the current page
+	// in the pagination toolbar.  
 	$scope.currentPage = function (pageNum) {
 		if ($routeParams.page === $rootScope.movies.total_pages) {
 			if (pageNum === 2) return "current";
@@ -57,6 +63,7 @@ movieApp.controller("homeController", function ($scope, movieFactory, $routePara
 		if (pageNum === 0) return "current";
 	};
 
+	// takes a movies id and grabs it from the movies collection.  
 	$scope.getMovieById = function (movieId) {
 		var modMovieId = movieId % 20 === 0 ? 20 : movieId % 20;
 		if (!$rootScope.movies.$resolved || Math.floor(modMovieId) + 1 !== $rootScope.movies.page) {
