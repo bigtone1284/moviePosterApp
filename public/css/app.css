@@ -2,6 +2,10 @@ html, body {
 	height: 100%;
 }
 
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
 body {
   padding-top: 70px;
 }
@@ -18,3 +22,4 @@ p {
 .content {
 	height: 100%;
 }
+
