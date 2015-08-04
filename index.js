@@ -1,3 +1,5 @@
+// Express Boiler-Plate
+
 var express = require("express");
 var morgan = require("morgan");
 var bodyParser = require("body-parser");
@@ -20,8 +22,11 @@ app.set("view options", {
 
 app.use(express.static(__dirname + "/public"));
 
+// API Call
+
 app.get('/movies_api', function (req, res, next) {
 	var queryParams = {
+		// Note: API Key is in the .env file.  
 		api_key: process.env.API_KEY,
 		page: req.query.page || 1
 	};

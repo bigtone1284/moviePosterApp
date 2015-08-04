@@ -1,4 +1,5 @@
 movieApp.controller("movieController", function ($scope, $routeParams, $location, $rootScope, $filter, movies) {
+	$scope.pageClass = "page-movie";
 	$rootScope.movies = movies;
 	$scope.getMovieById($routeParams.id);
 

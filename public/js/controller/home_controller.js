@@ -1,4 +1,5 @@
 movieApp.controller("homeController", function ($scope, movieFactory, $routeParams, $rootScope) {
+  $scope.pageClass = "page-home";
   $scope.headerSrc = "template/header.html";
   $routeParams.page = parseInt($routeParams.page, 10) || 1;
   $rootScope.movies = movieFactory.get({page: $routeParams.page});
