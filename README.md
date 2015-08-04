@@ -3,6 +3,12 @@ Switch Movie Grid
 
 ## Setup
 
+#### Installation
+Please have node, npm, and bower installed.
+
+`brew install node` (if you use homebrew)
+`npm install bower -g` (homebrew should install npm)
+
 #### API Server
 Please turn on the server on in the command-line
 `node index.js`
