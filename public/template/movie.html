@@ -1,0 +1,42 @@
+<div class="movie" style='background-image: {{background()}}' ng-show="currMovie">
+</div>
+<div class="container movie-details" ng-show="currMovie">
+	<div class="movie-nav">
+		<span class="left-nav">
+			<a href="#/?page={{pageNum}}"><span class="glyphicon glyphicon-menu-left"></span>Back to List</a>
+		</span>
+		<span class="right-nav">
+			<a href="#/movies/{{movieId + 1}}" ng-hide="lastMovie(movieId)">Next Movie<span class="glyphicon glyphicon-menu-right"></span></a>
+		</span>
+	</div>
+	<div class="container movie-text">
+		<div class="row">
+			<div class="col-sm-3 col-xs-5">
+				<img ng-src="{{posterLink(currMovie)}}" class="detail poster">
+			</div>
+			<div class="col-xs-6 vert-details">
+				Score:
+				<br>
+				{{vertDetails().score}}
+				<br>
+				<br>
+				Release Date:
+				<br>
+				{{vertDetails().releaseDate}}
+			</div>
+			<div class="col-sm-8 col-sm-offset-1 col-xs-12 movie-facts">
+				<h3>
+					{{movieTitle()}}
+				</h3>
+				<p class="details">
+					{{details()}}
+				</p>
+				<p>
+					<hr>
+					{{overview()}}
+					<hr>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>

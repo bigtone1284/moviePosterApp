@@ -1,0 +1,12 @@
+<div class="movies-list row">
+	<h4>Latest Releases</h2>
+	<div class="col-sm-1 gutter"></div>
+	<div class="col-sm-2 col-xs-6 movies" ng-repeat="movie in movies.results">
+	<p tooltips tooltip-title="{{movie.title}}" tooltip-size="small" tooltip-try="0">
+		<a href="#/movies/{{$index + 1 + 20 * (movies.page - 1)}}">
+			<img ng-src="{{posterLink(movie)}}" class="poster">
+		</a>	
+	</p>
+	</div>
+</div>
+<div ng-include src="paginationSrc"></div>

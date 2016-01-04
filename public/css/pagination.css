@@ -1,0 +1,43 @@
+.custom>li>a {
+	color: #9FA9C2;
+}
+
+a.page-number {
+	display: none;
+}
+
+li>a.first-last {
+	color: #30CCAD;
+}
+
+.custom>li>a:focus {
+	color: #9FA9C2;
+  background-color: #fff;
+}
+
+.custom>li>a:hover {
+	color: #30CCAD;
+}
+
+a.page.current {
+	color: #30CCAD;
+	font-weight: bolder;
+	background: #eee;
+}
+
+@media (min-width:0px) and (max-width:650px) {
+	a.page {
+		display: none;
+	}
+
+	a.page-number.current {
+		display: inline;
+		color: #30CCAD;
+		font-weight: bolder;
+		background: #eee;
+	}
+
+	.custom>li>a {
+		padding: 3px 6px;
+	}
+}
