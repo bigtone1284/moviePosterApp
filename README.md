@@ -1,4 +1,4 @@
-Switch Movie Grid
+Movie Grid
 ============
 
 ## Setup
